@@ -1,4 +1,5 @@
 import json
+import time
 from datetime import datetime
 from urllib import parse
 
@@ -69,6 +70,7 @@ class Cafe24Client(WebApplicationClient):
     def request(self, method, path, data=None, headers={}, **kwargs):
         if isinstance(data, dict):
             data = json.dumps(data)
+            headers.setdefault('Content-Type', 'application/json')
         response = self.session.request(
             method,
             API_V2(path),
@@ -78,6 +80,8 @@ class Cafe24Client(WebApplicationClient):
             client_secret=CLIENT_SECRET,
             **kwargs,
         )
+        if response.headers.get('X-Api-Call-Limit') == '39/40':
+            time.sleep(1)
         try:
             return response.json()
         except:

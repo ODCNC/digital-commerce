@@ -25,8 +25,10 @@ class Document(Dict):
 
 
 class MongoManager(metaclass=Singleton):
-    def __init__(self):
+    def __init__(self, **kwargs):
         self._client = None
+        self.kwargs = kwargs
+        kwargs.setdefault('document_class', Document)
 
     @property
     def client(self):
@@ -35,7 +37,7 @@ class MongoManager(metaclass=Singleton):
             if client.is_mongos:
                 return client
             client.close()
-        client = MongoClient()
+        client = MongoClient(**self.kwargs)
         self._client = client
         return client
 

@@ -4,5 +4,9 @@
 #
 #    pip-compile requirements.in
 #
+dnspython==2.1.0
+    # via pymongo
+pymongo[srv]==3.12.1
+    # via -r requirements.in
 python-decouple==3.5
     # via -r requirements.in

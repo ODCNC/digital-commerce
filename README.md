@@ -31,3 +31,10 @@ pip install pip-tools
 pip-compile requirements.in
 pip install -r requirements.txt
 ```
+
+### Test via pytest
+
+```shell
+pip install pytest-cov
+pytest --cov-report term-missing --cov=odcnc tests
+```

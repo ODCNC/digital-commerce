@@ -15,6 +15,9 @@ class Model:
     def create_all(cls):
         cls.metadata.create_all(cls.session.bind)
 
+    def flush(self):
+        self.save().flush()
+
     @classmethod
     def get(cls, *args, **kwargs) -> 'Model':
         return cls.session.get(cls, *args, **kwargs)
@@ -24,15 +27,16 @@ class Model:
         return cls.session.query(cls, *entities, **kwargs)
 
     def save(self):
-        return self.session.add(self)
+        self.session.add(self)
+        return self.session
 
     @classproperty
     def session(cls):
         return SessionManager().session
 
     @classmethod
-    def where(cls, *entities) -> Query:
-        return cls.query().where(*entities)
+    def where(cls, *criterion) -> Query:
+        return cls.query().where(*criterion)
 
 
 Model = declarative_base(cls=Model)

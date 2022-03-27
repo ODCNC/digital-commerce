@@ -35,6 +35,6 @@ pip install -r requirements.txt
 ### Test via pytest
 
 ```shell
-pip install pytest-cov
+pip install -r requirements-dev.txt
 pytest --cov-report term-missing --cov=odcnc tests
 ```

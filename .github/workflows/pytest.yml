@@ -22,7 +22,7 @@ jobs:
           pip install -r requirements.txt
       - name: Run All Tests
         run: |
-          pip install pytest-cov
+          pip install -r requirements-dev.txt
           pytest --cov-report term-missing --cov=odcnc tests
         env:
           PYTHONPATH: .:$PYTHONPATH

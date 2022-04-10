@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="digital-commerce",
-    version="0.0.1",
+    version="0.0.2",
     author="David Jeong",
     author_email="hyjeong@odcnc.co.kr",
     description="A common package for digital commerce.",

@@ -1,3 +1,5 @@
+from typing import TypeVar
+
 from decouple import config
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
@@ -10,6 +12,9 @@ def db_connect():
     return create_engine(config('DATABASE_URI', 'sqlite:///:memory:'))
 
 
+T = TypeVar('T')
+
+
 class Model:
     @classmethod
     def create_all(cls):
@@ -19,7 +24,7 @@ class Model:
         self.save().flush()
 
     @classmethod
-    def get(cls, *args, **kwargs) -> 'Model':
+    def get(cls: T, *args, **kwargs) -> T:
         return cls.session.get(cls, *args, **kwargs)
 
     @classmethod

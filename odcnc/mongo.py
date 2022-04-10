@@ -33,9 +33,10 @@ class MongoManager(metaclass=Singleton):
     @property
     def client(self):
         client: MongoClient = self._client
-        if client:
-            if client.is_mongos:
+        try:
+            if client and client.is_mongos:
                 return client
+        except:
             client.close()
         client = MongoClient(**self.kwargs)
         self._client = client

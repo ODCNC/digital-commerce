@@ -3,6 +3,9 @@ name = "digital-commerce"
 version = "0.1.0"
 description = "A common package for digital commerce."
 authors = ["David Jeong <drumrobot@1do.space>"]
+packages = [
+    { include = "odcnc" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -15,6 +18,10 @@ sqlalchemy = "^1.4.39"
 black = "^22.6.0"
 pre-commit = "^2.19.0"
 pytest-cov = "^3.0.0"
+
+[tool.poetry.urls]
+"Homepage" = "https://github.com/ODCNC/digital-commerce"
+"Bug Tracker" = "https://github.com/ODCNC/digital-commerce/issues"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

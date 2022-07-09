@@ -17,12 +17,10 @@ jobs:
           python-version: '3.x'
       - name: Install Dependencies
         run: |
-          python -m pip install --upgrade pip-tools
-          pip-compile
-          pip install -r requirements.txt
+          python -m pip install poetry
+          poetry install
       - name: Run All Tests
         run: |
-          pip install -r requirements-dev.txt
-          pytest --cov-report term-missing --cov=odcnc tests
+          poetry run pytest --cov-report term-missing --cov=odcnc tests
         env:
           PYTHONPATH: .:$PYTHONPATH

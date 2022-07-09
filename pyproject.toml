@@ -1,2 +1,24 @@
+[tool.poetry]
+name = "digital-commerce"
+version = "0.1.0"
+description = "A common package for digital commerce."
+authors = ["David Jeong <drumrobot@1do.space>"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+dnspython = "^2.1.0"
+pymongo = "^4.1.1"
+python-decouple = "^3.6"
+sqlalchemy = "^1.4.39"
+
+[tool.poetry.dev-dependencies]
+black = "^22.6.0"
+pre-commit = "^2.19.0"
+pytest-cov = "^3.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
 [tool.black]
 skip-string-normalization=true
